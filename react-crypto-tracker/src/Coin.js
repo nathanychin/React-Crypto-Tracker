@@ -1,8 +1,10 @@
 import React from 'react'
+import './Coin.css'
 
-const Coin = ({image, name, symbol, price, volume}) => {
+// toLocaleString() adds commas
+const Coin = ({image, name, symbol, price, volume, priceChange, marketcap}) => {
     return (
-        <div className="coin-connection_type">
+        <div className="coin-container">
             <div className="coin-row">
                 <div className="coin">
                     <img src={image} alt="Logo" />
@@ -12,6 +14,10 @@ const Coin = ({image, name, symbol, price, volume}) => {
                 <div className="coin-data">
                     <p className="coin-price">${price}</p>
                     <p className="coin-volume">${volume.toLocaleString()}</p>
+                    {priceChange < 0 ? 
+                    (<p className="coin-percent red">{priceChange.toFixed(2)} %</p>) : (<p className="coin-percent green"> {priceChange.toFixed(2)} %</p>)
+                    }
+                    <p className="coin-marketcap">Market Cap: ${marketcap.toLocaleString()}</p>
                 </div>
             </div>
         </div>
